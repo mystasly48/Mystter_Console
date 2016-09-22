@@ -5,8 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Mystter_Console {
-    class Program {
-        static void Main(string[] args) {
+    public class Program {
+        public static void Main(string[] args) {
+            Console.WriteLine("Mystter - Console");
+            Console.WriteLine("help でコマンドを確認することができます。");
+            Command.Read();
         }
     }
 }
