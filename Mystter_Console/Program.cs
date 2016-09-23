@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mystter_Console {
     public class Program {
+        public static Settings settings = new Settings();
         public static void Main(string[] args) {
+            settings = settings.Load();
             Console.WriteLine("Mystter - Console");
             Console.WriteLine("help でコマンドを確認することができます。");
-            Command.Read();
+            Command.ReadCommand();
+            settings.Save(settings);
         }
     }
 }
