@@ -9,8 +9,8 @@ namespace Mystter_Console {
         public static readonly string Help = "help";
         public static readonly string Exit = "exit";
         public static readonly string Clear = "clear";
-        public static readonly string Current = "current ";
-        public static readonly string List = "list ";
+        public static readonly string Current = "current";
+        public static readonly string List = "list";
         public static readonly string Add = "add ";
         public static readonly string Switch = "switch ";
         public static readonly string Tweet = "tweet ";
