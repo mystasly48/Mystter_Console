@@ -30,11 +30,9 @@ namespace Mystter_Console {
             } else if (str.Contains(Commands.Clear)) {
                 Console.Clear();
             } else if (str.Contains(Commands.Current)) {
-                var param = ExtractParam(str, Commands.Current);
-
+                Console.WriteLine(Twitter.GetCurrentUser());
             } else if (str.Contains(Commands.List)) {
-                var param = ExtractParam(str, Commands.List);
-
+                Console.WriteLine("申し訳ありませんが、このコマンドは現在実装中です。");
             } else if (str.Contains(Commands.Add)) {
                 var param = ExtractParam(str, Commands.Add);
                 Twitter.AddAccount(param);
