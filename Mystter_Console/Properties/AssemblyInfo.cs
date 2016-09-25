@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("Mystter_Console")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Mystter - Console")]
+[assembly: AssemblyDescription("Tweet from Console")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Mystter_Console")]
+[assembly: AssemblyCompany("Mystasly")]
+[assembly: AssemblyProduct("Mystter - Console")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
