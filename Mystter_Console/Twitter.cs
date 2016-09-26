@@ -123,11 +123,11 @@ namespace Mystter_Console {
         public static void SendTweet(string msg) {
             try {
                 if (twitter == null) {
-                    Console.WriteLine("アカウントが設定されていません。");
+                    Console.WriteLine("アカウントは設定されていません。");
                     return;
                 }
                 if (string.IsNullOrEmpty(msg)) {
-                    Console.WriteLine("ツイートが入力されていません。");
+                    Console.WriteLine("ツイートは入力されていません。");
                     return;
                 }
                 if (msg.Length > 140) {
