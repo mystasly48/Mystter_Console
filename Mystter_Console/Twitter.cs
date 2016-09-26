@@ -8,11 +8,9 @@ namespace Mystter_Console {
         private static Tokens twitter;
 
         public static void Init() {
-            if (!string.IsNullOrEmpty(Program.settings.Selected)) {
+            if (Program.settings.Selected != "null") {
                 var _account = SearchUserFromName(Program.settings.Selected);
                 twitter = CreateTokens(_account.Token, _account.Secret);
-            } else {
-                Console.WriteLine("アカウントが追加されていません。");
             }
             Command.ReadCommand();
         }
