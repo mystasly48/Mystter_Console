@@ -50,7 +50,7 @@ namespace Mystter_Console {
                 Console.WriteLine("申し訳ありませんが、このコマンドは現在実装中です。");
             } else if (str.Contains(Commands.Remove)) {
                 var param = ExtractParam(str, Commands.Remove);
-                Console.WriteLine("申し訳ありませんが、このコマンドは現在実装中です。");
+                Twitter.DeleteAccount(param);
             } else if (str.Contains(Commands.Image)) {
                 var param = ExtractParam(str, Commands.Image);
                 Console.WriteLine("申し訳ありませんが、このコマンドは現在実装中です。");
