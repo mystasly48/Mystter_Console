@@ -32,13 +32,13 @@ namespace Mystter_Console {
             } else if (str.Contains(Commands.Current)) {
                 Console.WriteLine(Twitter.GetCurrentUser());
             } else if (str.Contains(Commands.List)) {
-                Console.WriteLine("申し訳ありませんが、このコマンドは現在実装中です。");
+                foreach (var s in Twitter.GetAccountNames()) Console.WriteLine(s);
             } else if (str.Contains(Commands.Add)) {
                 var param = ExtractParam(str, Commands.Add);
                 Twitter.AddAccount(param);
             } else if (str.Contains(Commands.Switch)) {
                 var param = ExtractParam(str, Commands.Switch);
-
+                Twitter.SwitchAccount(param);
             } else if (str.Contains(Commands.Tweet)) {
                 var param = ExtractParam(str, Commands.Tweet);
                 Twitter.SendTweet(param);
