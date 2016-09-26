@@ -30,9 +30,19 @@ namespace Mystter_Console {
             } else if (str.Contains(Commands.Clear)) {
                 Console.Clear();
             } else if (str.Contains(Commands.Current)) {
-                Console.WriteLine(Twitter.GetCurrentUser());
+                var current = Twitter.GetCurrentUser();
+                if (current == "null") {
+                    Console.WriteLine("アカウントは設定されていません。");
+                } else {
+                    Console.WriteLine(current);
+                }
             } else if (str.Contains(Commands.List)) {
-                foreach (var s in Twitter.GetAccountNames()) Console.WriteLine(s);
+                if (Twitter.GetAccountCount() != 0) {
+                    foreach (var s in Twitter.GetAccountNames())
+                        Console.WriteLine(s);
+                } else {
+                    Console.WriteLine("アカウントは追加されていません。");
+                }
             } else if (str.Contains(Commands.Add)) {
                 var param = ExtractParam(str, Commands.Add);
                 Twitter.AddAccount(param);
