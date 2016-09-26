@@ -17,13 +17,13 @@ namespace Mystter_Console {
                 Console.WriteLine("exit - プログラムを終了");
                 Console.WriteLine("clear - コンソールを初期化");
                 Console.WriteLine("current - ログイン中のアカウントを表示");
-                Console.WriteLine("list - 登録されているアカウントを表示 *未実装*");
+                Console.WriteLine("list - 登録されているアカウントを表示");
                 Console.WriteLine("add [名前] - アカウントを登録");
                 Console.WriteLine("switch [名前] - アカウントを切り替え");
                 Console.WriteLine("tweet [文字列] - 文字列をツイート");
                 Console.WriteLine("tweets [数値] - 過去ツイートを[数値]件表示（最大５０件） *未実装*");
                 Console.WriteLine("delete [数値] - [数値]前のツイートを削除（最大２００件前） *未実装*");
-                Console.WriteLine("remove [名前] - 登録されているアカウント[名前]を削除 *未実装*");
+                Console.WriteLine("remove [名前] - 登録されているアカウント[名前]を削除");
                 Console.WriteLine("image [文字列] [場所] - 画像[場所]を添付して[文字列]をツイート *未実装*");
             } else if (str.Contains(Commands.Exit)) {
                 return;
