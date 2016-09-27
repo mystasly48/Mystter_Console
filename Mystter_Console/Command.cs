@@ -11,6 +11,19 @@ namespace Mystter_Console {
             SwitchCommands(ReadLine());
         }
 
+        public static bool TakeConfirm(string question) {
+            while (true) {
+                Console.WriteLine(question + "(y/n)");
+                var input = ReadLine();
+                if (input == "y") {
+                    return true;
+                }
+                if (input == "n") {
+                    return false;
+                }
+            }
+        }
+
         private static void SwitchCommands(string str) {
             if (str.Contains(Commands.Help)) {
                 Console.WriteLine("help - ヘルプを表示");
