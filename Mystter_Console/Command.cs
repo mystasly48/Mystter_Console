@@ -24,20 +24,26 @@ namespace Mystter_Console {
             }
         }
 
+        public static bool CanConvertToInt(string str) {
+            int i;
+            var canConvert = int.TryParse(str, out i);
+            return canConvert;
+        }
+
         private static void SwitchCommands(string str) {
             if (str.Contains(Commands.Help)) {
-                Console.WriteLine("help - ヘルプを表示");
-                Console.WriteLine("exit - プログラムを終了");
-                Console.WriteLine("clear - コンソールを初期化");
-                Console.WriteLine("current - ログイン中のアカウントを表示");
-                Console.WriteLine("list - 登録されているアカウントを表示");
-                Console.WriteLine("add [名前] - アカウントを登録");
-                Console.WriteLine("switch [名前] - アカウントを切り替え");
-                Console.WriteLine("tweet [文字列] - 文字列をツイート");
-                Console.WriteLine("tweets [数値] - 過去ツイートを[数値]件表示（最大５０件） *未実装*");
-                Console.WriteLine("delete [数値] - [数値]前のツイートを削除（最大２００件前） *未実装*");
-                Console.WriteLine("remove [名前] - 登録されているアカウント[名前]を削除");
-                Console.WriteLine("image [文字列] [場所] - 画像[場所]を添付して[文字列]をツイート *未実装*");
+                Console.WriteLine(Commands.HelpInfo);
+                Console.WriteLine(Commands.ExitInfo);
+                Console.WriteLine(Commands.ClearInfo);
+                Console.WriteLine(Commands.CurrentInfo);
+                Console.WriteLine(Commands.ListInfo);
+                Console.WriteLine(Commands.AddInfo);
+                Console.WriteLine(Commands.SwitchInfo);
+                Console.WriteLine(Commands.TweetInfo);
+                Console.WriteLine(Commands.TweetsInfo);
+                Console.WriteLine(Commands.DeleteInfo);
+                Console.WriteLine(Commands.RemoveInfo);
+                Console.WriteLine(Commands.ImageInfo);
             } else if (str.Contains(Commands.Exit)) {
                 return;
             } else if (str.Contains(Commands.Clear)) {
@@ -70,7 +76,11 @@ namespace Mystter_Console {
                 Console.WriteLine("申し訳ありませんが、このコマンドは現在実装中です。");
             } else if (str.Contains(Commands.Delete)) {
                 var param = ExtractParam(str, Commands.Delete);
-                Console.WriteLine("申し訳ありませんが、このコマンドは現在実装中です。");
+                if (CanConvertToInt(param)) {
+                    Twitter.DeleteTweet(int.Parse(param));
+                } else {
+                    Console.WriteLine("引数は数値で入力してください。");
+                }
             } else if (str.Contains(Commands.Remove)) {
                 var param = ExtractParam(str, Commands.Remove);
                 Twitter.DeleteAccount(param);
