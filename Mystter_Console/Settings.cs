@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace Mystter_Console {
     public class Settings {
-        public string Selected;
+        public string Selected = "null";
         public List<Account> Accounts = new List<Account>();
 
         private string SettingsFilePath = Info.Name + ".xml";
