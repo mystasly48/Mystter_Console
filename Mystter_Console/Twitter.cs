@@ -24,21 +24,16 @@ namespace Mystter_Console {
                     twitter = s.GetTokens(Command.ReadLine());
                     SetCurrentUser(name);
                     SaveAccount(twitter, name);
-                    Console.WriteLine("アカウント {0} を追加しました。", name);
+                    Console.WriteLine($"アカウント {name} を追加しました。");
                     break;
                 } catch (TwitterException ex) {
                     // TODO: PIN が不正だった場合にはどうするか・・・。
                     if (ex.Message == "Error processing your OAuth request: Invalid oauth_verifier parameter") {
-                        ConfirmReAuth:
-                        Console.WriteLine("不正な PIN です。");
-                        Console.WriteLine("再度認証しますか？ y/n");
-                        var input = Command.ReadLine();
-                        if (input == "y" || input == "yes") {
+                        var reOauth = Command.TakeConfirm("不正なPINです。再認証しますか？");
+                        if (reOauth) {
                             continue;
-                        } else if (input == "n" || input == "no") {
-                            break;
                         } else {
-                            goto ConfirmReAuth;
+                            break;
                         }
                     }
                     Console.WriteLine("TwitterException が発生しました。");
@@ -52,9 +47,9 @@ namespace Mystter_Console {
             if (_account != null) {
                 twitter = CreateTokens(_account.Token, _account.Secret);
                 SetCurrentUser(name);
-                Console.WriteLine("アカウント {0} に切り替えました。", name);
+                Console.WriteLine($"アカウント {name} に切り替えました。");
             } else {
-                Console.WriteLine("アカウント {0} は存在しません。", name);
+                Console.WriteLine($"アカウント {name} は存在しません。");
             }
         }
 
@@ -66,9 +61,24 @@ namespace Mystter_Console {
                     twitter = null;
                     SetCurrentUser("null");
                 }
-                Console.WriteLine("アカウント {0} を削除しました。", name);
+                Console.WriteLine($"アカウント {name} を削除しました。");
             } else {
-                Console.WriteLine("アカウント {0} は存在しません。", name);
+                Console.WriteLine($"アカウント {name} は存在しません。");
+            }
+        }
+
+        public static void DeleteTweet(int index) {
+            if (index <= 200 && index > 0) {
+                var targetTweet = twitter.Statuses.UserTimeline(screen_name: GetCurrentUser(), count: index).Last();
+                var confirm = Command.TakeConfirm($"{targetTweet.Text}\nを削除しますか？");
+                if (confirm) {
+                    twitter.Statuses.Destroy(targetTweet.Id);
+                    Console.WriteLine("ツイートを削除しました。");
+                } else {
+                    Console.WriteLine("ツイートの削除をキャンセルしました。");
+                }
+            } else {
+                Console.WriteLine("削除できるツイートは２００件前までです。");
             }
         }
 

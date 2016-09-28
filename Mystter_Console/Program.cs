@@ -5,7 +5,7 @@ namespace Mystter_Console {
         public static Settings settings = new Settings();
         public static void Main(string[] args) {
             settings = settings.Load();
-            Console.WriteLine("Mystter - Console");
+            Console.WriteLine(Info.Name);
             Console.WriteLine("help でコマンドを確認することができます。");
             Twitter.Init();
             settings.Save(settings);
