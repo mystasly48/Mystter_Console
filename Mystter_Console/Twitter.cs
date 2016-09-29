@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using CoreTweet;
@@ -79,6 +80,22 @@ namespace Mystter_Console {
                 }
             } else {
                 Console.WriteLine("削除できるツイートは２００件前までです。");
+            }
+        }
+
+        public static string GetTweets(int count) {
+            if (count <= 200 && count > 0) {
+                var tweets = twitter.Statuses.UserTimeline(screen_name: GetCurrentUser(), count: count);
+                var tweetsList = new string[tweets.Count];
+                for (int i = 0; i < tweets.Count; i++) {
+                    var user = tweets[i].User.Name + " : " + tweets[i].User.ScreenName + " : " + tweets[i].CreatedAt.LocalDateTime.ToString("M月d日 H時m分s秒");
+                    var text = tweets[i].Text;
+                    tweetsList[i] = user + "\n" + text;
+                }
+                var tweetsStr = string.Join("\n----------\n", tweetsList);
+                return tweetsStr;
+            } else {
+                return "取得できるツイートは２００件までです。";
             }
         }
 

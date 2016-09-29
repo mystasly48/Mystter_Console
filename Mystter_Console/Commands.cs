@@ -21,7 +21,7 @@
         public static readonly string AddInfo = "add [名前] - アカウントを登録";
         public static readonly string SwitchInfo = "switch [名前] - アカウントを切り替え";
         public static readonly string TweetInfo = "tweet [文字列] - 文字列をツイート";
-        public static readonly string TweetsInfo = "tweets [数値] - 過去ツイートを[数値]件表示（最大５０件）" + " *未実装*";
+        public static readonly string TweetsInfo = "tweets [数値] - 過去ツイートを[数値]件表示（最大２００件）";
         public static readonly string DeleteInfo = "delete [数値] - [数値]前のツイートを削除（最大２００件前）";
         public static readonly string RemoveInfo = "remove [名前] - 登録されているアカウント[名前]を削除";
         public static readonly string ImageInfo = "image [文字列] [場所] - 画像[場所]を添付して[文字列]をツイート" + " *未実装*";

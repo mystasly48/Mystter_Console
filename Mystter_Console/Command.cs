@@ -73,7 +73,11 @@ namespace Mystter_Console {
                 Twitter.SendTweet(param);
             } else if (str.Contains(Commands.Tweets)) {
                 var param = ExtractParam(str, Commands.Tweets);
-                Console.WriteLine("申し訳ありませんが、このコマンドは現在実装中です。");
+                if (CanConvertToInt(param)) {
+                    Console.WriteLine(Twitter.GetTweets(int.Parse(param)));
+                } else {
+                    Console.WriteLine("引数は数値で入力してください。");
+                }
             } else if (str.Contains(Commands.Delete)) {
                 var param = ExtractParam(str, Commands.Delete);
                 if (CanConvertToInt(param)) {
