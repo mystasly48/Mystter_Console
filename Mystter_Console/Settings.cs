@@ -8,7 +8,7 @@ namespace Mystter_Console {
         public string Selected = "null";
         public List<Account> Accounts = new List<Account>();
 
-        private string SettingsFilePath = Info.Name + ".xml";
+        private string SettingsFilePath = Info.GetCurrentDirectory() + @"\" +  Info.Name + ".xml";
         
         // TODO: 引数をなくしたい・・・
         public void Save(Settings settings) {
